@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
-import CL from "composables/COMMON/common";
+import {parseYearAndMonth} from "utils/dateUtils";
 
 type ANSWER_LIST = {
   answeredList: ANSWER_TYPE; //답변목록
@@ -37,11 +37,6 @@ type ANSWER = {
   answer: string;
 };
 
-type QNA_DATE_ITEM = {
-  //qna 객체 1개
-  date: string;
-  count: number;
-};
 type ANSWER_TYPE = {
   content: Array<any>;
   page: number;
@@ -50,11 +45,15 @@ type ANSWER_TYPE = {
 };
 
 /**
- * @desc 이번달이상의 날짜인지 체크
- * @returns {boolean} true: 이번달 이상, false: 이번달 이하
+ * @desc 해당 date 가 이번 달 이상인지 체크 
+ * - 년도도 체크 해야함
+ * - 일자는 체크하지않음
+ * @uses dateUtils
+ * @returns {boolean} true: 날짜 이후, false: 날짜 이전
  */
-const checkIsMonthOver = (date: Date|string): boolean => {
-  return new Date(date).getMonth() >= new Date().getMonth()
+const checkIsMonthOver = (date: Array<any>|string): boolean => {
+  const parsedDate = typeof date === "string" ? date : date[0] + "-" + date[1]
+  return parseYearAndMonth(parsedDate) >= parseYearAndMonth(new Date())
 }
 
 /**
@@ -169,7 +168,6 @@ const useAnsweredList = create<ANSWER_LIST>((set) => ({
         const count = result?.data ? result?.data : 0;
         set({ answeredCount: count });
       }
-  
     }
     
   },

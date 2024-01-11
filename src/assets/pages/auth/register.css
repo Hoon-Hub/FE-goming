@@ -231,12 +231,14 @@
   font-weight: 700;
   font-size: 10px;
   color: #ea4343;
+  margin-top: 4px;
 }
 .register-input-success-msg {
   font-style: normal;
   font-weight: 700;
   font-size: 10px;
   color: #59b757;
+  margin-top: 4px;
 }
 .register-button {
   /* justify-content: center; */

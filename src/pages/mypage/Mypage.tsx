@@ -277,11 +277,11 @@ const Mypage: React.FC = () => {
                   closeClick={handleRePasswordReset}
                   errObject={
                     rePasswordChk === true ? (
-                      <div className="register-input-error-msg">
+                      <div className="register-input-error-msg caption2-bold">
                         기존 비밀번호가 일치하지 않습니다. 다시 입력해주세요.
                       </div>
                     ) : rePasswordExistChk === true ? (
-                      <div className="register-input-error-msg">
+                      <div className="register-input-error-msg caption2-bold">
                         비밀번호를 입력해주세요.
                       </div>
                     ) : (
@@ -306,11 +306,11 @@ const Mypage: React.FC = () => {
                   closeClick={handleNewPasswordReset}
                   errObject={
                     passwordErrorChk === true ? (
-                      <div className="register-input-error-msg">
+                      <div className="register-input-error-msg caption2-bold">
                         비밀번호는 8~20자의 영문, 숫자, 특수문자로 구성해주세요.
                       </div>
                     ) : newPasswordExistChk === true ? (
-                      <div className="register-input-error-msg">
+                      <div className="register-input-error-msg caption2-bold">
                         비밀번호를 입력해주세요.
                       </div>
                     ) : (
@@ -341,17 +341,17 @@ const Mypage: React.FC = () => {
                   }
                   errObject={
                     passwordReconfirmSuccessChk === true ? (
-                      <div className="register-input-error-msg">
+                      <div className="register-input-error-msg caption2-bold">
                         비밀번호가 일치하지 않습니다. 다시 입력해주세요.
                       </div>
                     ) : passwordReconfirmSuccessChk === false ? (
                       <>
-                        <div className="register-input-success-msg">
+                        <div className="register-input-success-msg caption2-bold ">
                           비밀번호가 일치합니다.
                         </div>
                       </>
                     ) : newRePasswordExistChk === true ? (
-                      <div className="register-input-error-msg">
+                      <div className="register-input-error-msg caption2-bold">
                         비밀번호를 입력해주세요.
                       </div>
                     ) : (

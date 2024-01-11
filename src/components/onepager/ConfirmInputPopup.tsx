@@ -15,21 +15,21 @@ import useAuthStore from "store/modules/Auth"
  * @param {Function} cancelCallbackFunction
  * 
  */
-const ConfirmInputPopup = ({text, confirmText, cancelText, confirmCallbackFunction, cancelCallbackFunction}:CONFIRM_INPUT_POPUP) => {
-  const {userInfo} = useAuthStore(state => state)
+const ConfirmInputPopup = ({ text, confirmText, cancelText, confirmCallbackFunction, cancelCallbackFunction }: CONFIRM_INPUT_POPUP) => {
+  const { userInfo } = useAuthStore(state => state)
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [email, setEmail] = useState<string>(userInfo.eml)
   const [emailChk, setEmailChk] = useState<boolean>(false) //이메일형식체크결과
 
   //email-onchange
-  const handleEmail = ({target}:any) => {
+  const handleEmail = ({ target }: any) => {
     setEmail(target.value)
   }
 
   //이메일 형식에 맞는지 확인, 콜백 호출
   const beforeConfirmCallbackFunction = () => {
     if (email !== null && email !== '') {
-      if ( emailRegex.test(email) === true ) {
+      if (emailRegex.test(email) === true) {
         confirmCallbackFunction(email)
       } else {
         setEmailChk(false)
@@ -63,11 +63,11 @@ const ConfirmInputPopup = ({text, confirmText, cancelText, confirmCallbackFuncti
                 // buttonClick={handleEmailExistCheck}
                 errObject={
                   emailChk === true ? (
-                    <div className="register-input-error-msg">
+                    <div className="register-input-error-msg caption2-bold">
                       이메일을 입력해주세요.
                     </div>
                   ) : emailRegex.test(email) === false ? ( //이메일 형식이 바르지 않다면
-                    <div className="register-input-error-msg">
+                    <div className="register-input-error-msg caption2-bold">
                       이메일을 형식을 확인해주세요.
                     </div>
                   ) : (
@@ -89,16 +89,16 @@ const ConfirmInputPopup = ({text, confirmText, cancelText, confirmCallbackFuncti
               } */}
             </div>
             <div className="ConfirmInputPopup-btnwrap">
-              <button 
-                type="button" className="btn-p-l body3-bold" 
-                onClick={()=>beforeConfirmCallbackFunction()}
+              <button
+                type="button" className="btn-p-l body3-bold"
+                onClick={() => beforeConfirmCallbackFunction()}
               >
                 {confirmText}
               </button>
 
-              <button 
-                type="button" className="btn-s-l body3-bold" 
-                onClick={()=>cancelCallbackFunction()}
+              <button
+                type="button" className="btn-s-l body3-bold"
+                onClick={() => cancelCallbackFunction()}
               >
                 {cancelText}
               </button>

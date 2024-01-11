@@ -426,7 +426,7 @@ const Register: React.FC = () => {
             }}
             errObject={
               nickNameChk === false ? (
-                <div className="register-input-error-msg">
+                <div className="register-input-error-msg caption2-bold">
                   닉네임을 입력해주세요.
                 </div>
               ) : (
@@ -478,11 +478,11 @@ const Register: React.FC = () => {
             isClose={emailChk ? true : false}
             errObject={
               emailChk === true ? (
-                <div className="register-input-error-msg">
+                <div className="register-input-error-msg caption2-bold">
                   이메일을 입력해주세요.
                 </div>
               ) : emailFormChk === false ? ( //이메일 형식이 바르지 않다면
-                <div className="register-input-error-msg">
+                <div className="register-input-error-msg caption2-bold">
                   이메일을 형식을 확인해주세요.
                 </div>
               ) : (
@@ -513,7 +513,7 @@ const Register: React.FC = () => {
             }}
             errObject={
               authNumberChk === false ? (
-                <div className="register-input-error-msg">
+                <div className="register-input-error-msg caption2-bold">
                   이메일 인증 코드를 입력해주세요.
                 </div>
               ) : (
@@ -592,7 +592,7 @@ const Register: React.FC = () => {
               }}
               errObject={
                 passwordErrorChk === true ? (
-                  <div className="register-input-error-msg">
+                  <div className="register-input-error-msg caption2-bold">
                     비밀번호는 8~20자의 영문, 숫자, 특수문자로 구성해주세요.
                   </div>
                 ) : (
@@ -620,12 +620,12 @@ const Register: React.FC = () => {
               }
               errObject={
                 passwordReconfirmSuccessChk === true ? (
-                  <div className="register-input-error-msg margintop-8">
+                  <div className="register-input-error-msg caption2-bold ">
                     비밀번호가 일치하지 않습니다. 다시 입력해주세요.
                   </div>
                 ) : passwordReconfirmSuccessChk === false ? (
                   <>
-                    <div className="register-input-success-msg margintop-8">
+                    <div className="register-input-success-msg caption2-bold">
                       비밀번호가 일치합니다.
                     </div>
                   </>
@@ -812,7 +812,7 @@ const Register: React.FC = () => {
 
           <div className="margintop-48">
             {needCheck === true ? (
-              <div className="register-input-error-msg">
+              <div className="register-input-error-msg caption2-bold">
                 *필수 항목에 동의하셔야 가입할 수 있습니다.
               </div>
             ) : (

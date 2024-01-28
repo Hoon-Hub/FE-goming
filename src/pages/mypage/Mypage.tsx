@@ -1,6 +1,6 @@
 import Auth from "store/modules/Auth";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SelectBox from "components/common/SelectBox";
 import Footer from "components/Footer";
 import useDefaultSets from "store/modules/Defaults";
@@ -22,6 +22,8 @@ const Mypage: React.FC = () => {
   const { isInfoChange, updateInfoChangeStatus } = Auth((state) => state); // zustand로 가져온 임시데이터
 
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [email, setEmail] = useState<string>("");
   const [nickName, setNickName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -204,13 +206,21 @@ const Mypage: React.FC = () => {
           setHeaderText("개인 정보 수정");
           setIsNavigation(false);
 
-          return () => setIsNavigation(true);
+          return () => { setIsNavigation(true); }
         } catch (e) {
           setLoading(false);
         }
       }
     };
     fetchData();
+    return () => {
+      const previousPath = location.state?.from || '';
+      console.log(navigate)
+      console.log(previousPath, " preve ")
+      if (previousPath !== '/password-check') {
+        updateInfoChangeStatus(false);
+      }
+    }
   }, []);
   return (
     <>
@@ -473,7 +483,9 @@ const Mypage: React.FC = () => {
                 className="body3-bold register-button margintop-48"
                 style={{ width: "100%" }}
                 onClick={() => {
-                  navigate("/password-check");
+                  navigate("/password-check", { replace: true });
+
+
                 }}
               >
                 개인 정보 수정

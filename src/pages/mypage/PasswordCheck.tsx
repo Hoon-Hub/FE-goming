@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "store/modules/Auth";
 import Auth from "store/modules/Auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "components/auth/Header";
 import "assets/pages/auth/passwordCheck.css";
 import useDefaultSets from "store/modules/Defaults";
@@ -18,6 +18,7 @@ import AlertTextPopup from "components/AlertTextPopup";
 const PasswordCheck: React.FC = () => {
   const { setHeaderText, setIsNavigation } = useDefaultSets();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isLogin, userInfo } = useAuthStore((state) => state);
   const [password, setPassword] = useState<string>("");
   const [passwordVerify, setPasswrodVerify] = useState<boolean>(true);
@@ -48,7 +49,7 @@ const PasswordCheck: React.FC = () => {
     if (rst.data === true) {
       //일치확인
       updateInfoChangeStatus(true);
-      navigate("/MyPage", { replace: true }); //해당 history를 제거
+      navigate("/mypage", { replace: true, state: { from: location.pathname } }); //해당 history를 제거
       setPasswordChecked(false);
     } else {
 

@@ -169,8 +169,8 @@ const Register: React.FC = () => {
           withCredentials: false,
         }
       );
-      console.log(result);
-      if (result.data !== "") {
+      console.log(result.data);
+      if (result.data === "") {
 
         setNickNameExistChk(false);
       } else {

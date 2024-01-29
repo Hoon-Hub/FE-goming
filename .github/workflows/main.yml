@@ -3,7 +3,8 @@ name: React Deploy
 
 on:
   push:
-    branches: [ master ]
+#    branches: [ master ]
+    branches: [ masterssssss ]
 
 jobs:
   build:
